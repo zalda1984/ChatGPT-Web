@@ -29,6 +29,7 @@ if os.getenv("DEPLOY_ON_RAILWAY") is not None:  # 如果是在Railway上部署�
 
 API_KEY = os.getenv("OPENAI_API_KEY", default=API_KEY)  # 如果环境变量中设置了OPENAI_API_KEY，则使用环境变量中的OPENAI_API_KEY
 PORT = os.getenv("PORT", default=PORT)  # 如果环境变量中设置了PORT，则使用环境变量中的PORT
+DEFAULT_PASSWORD = "nicaibudao"
 
 STREAM_FLAG = True  # 是否开启流式推送
 USER_DICT_FILE = "all_user_dict_v2.pkl"  # 用户信息存储文件（包含版本）
@@ -400,6 +401,9 @@ def return_message():
         print("当前会话为首次请求，用户输入:\t", send_message)
         if send_message.startswith("new:"):
             user_id = send_message.split(":")[1]
+            password = send_message.split(":")[2]
+            if password != DEFAULT_PASSWORD:
+                return "请输入密码"
             if user_id in all_user_dict:
                 session['user_id'] = user_id
                 return url_redirect
