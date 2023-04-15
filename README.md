@@ -9,6 +9,7 @@
 > 流式逐字加载显示  
 > 代码高亮  
 > 查余额  
+test
 
 ## 演示动图
 ![演示](https://user-images.githubusercontent.com/38237931/227176542-c924084c-8ceb-41cd-9e09-1f82e1d14366.gif)
